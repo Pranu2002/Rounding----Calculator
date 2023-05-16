@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Rounding Calculator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+        }
+        
+        h1 {
+            text-align: center;
+        }
+        
+        .input-group {
+            margin-bottom: 10px;
+        }
+        
+        .input-group label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        
+        .input-group input {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ccc;
+        }
+        
+        .input-group input[type="button"] {
+            cursor: pointer;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+        }
+        
+        .result {
+            background-color: #f4f4f4;
+            padding: 10px;
+            margin-top: 20px;
+            border: 1px solid #ccc;
+        }
+    </style>
+</head>
+<body>
+    <h1>Rounding Calculator</h1>
+    
+    <div class="input-group">
+        <label for="number">Number:</label>
+        <input type="number" id="number">
+    </div>
+    
+    <div class="input-group">
+        <label for="decimalPlaces">Decimal Places:</label>
+        <input type="number" id="decimalPlaces">
+    </div>
+    
+    <div class="input-group">
+        <input type="button" value="Round" onclick="round()">
+    </div>
+    
+    <div class="result" id="result"></div>
+    
+    <script>
+        function round() {
+            var number = parseFloat(document.getElementById("number").value);
+            var decimalPlaces = parseInt(document.getElementById("decimalPlaces").value);
+            
+            if (isNaN(number)) {
+                document.getElementById("result").innerHTML = "Please enter a valid number.";
+            } else if (isNaN(decimalPlaces) || decimalPlaces < 0) {
+                document.getElementById("result").innerHTML = "Please enter a valid number of decimal places.";
+            } else {
+                var roundedNumber = number.toFixed(decimalPlaces);
+                document.getElementById("result").innerHTML = "Rounded Number: " + roundedNumber;
+            }
+        }
+    </script>
+</body>
+</html>
